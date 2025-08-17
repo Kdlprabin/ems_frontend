@@ -95,7 +95,6 @@ const dashboard_data = [
 const TableData = ({selectedBranch}:{
   selectedBranch: string | null;
 }) => {
-  console.log(selectedBranch);
   return (
     <>
       {

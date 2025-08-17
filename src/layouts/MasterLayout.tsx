@@ -1,8 +1,11 @@
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import "./master.layout.css"
 
 
 function MasterLayout() {
+
+  const navigate = useNavigate();
+
   return (
     <div>
       <header>
@@ -10,9 +13,15 @@ function MasterLayout() {
         <div>
           <nav>
             <ul>
-              <li><a href="/">Dashboard</a></li>
-              <li><a href="/staff">Staff</a></li>
-              <li><a href="/login">Login</a></li>
+              <li><p 
+              onClick={() => navigate("/dashboard")}
+              >Dashboard</p></li>
+              <li><p 
+              onClick={() => navigate("/staff")}
+              >Staff</p></li>
+              <li><p 
+              onClick={() => navigate("/login")}
+              >Login</p></li>
             </ul>
           </nav>
         </div>

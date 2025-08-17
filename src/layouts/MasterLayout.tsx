@@ -14,7 +14,7 @@ function MasterLayout() {
           <nav>
             <ul>
               <li><p 
-              onClick={() => navigate("/dashboard")}
+              onClick={() => navigate("/")}
               >Dashboard</p></li>
               <li><p 
               onClick={() => navigate("/staff")}

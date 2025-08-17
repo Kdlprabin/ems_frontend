@@ -13,3 +13,8 @@ nav ul {
     display: flex;
     justify-content: space-evenly;
 }
+
+nav ul li p:hover{
+    color: #007bff;
+    cursor: pointer;
+}

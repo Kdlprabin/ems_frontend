@@ -57,7 +57,9 @@ const StaffPage = () => {
     try {
       // const response = await axios.get((`${BACKEND_URL}/api/staff/staff-name/`).concat(branchName));
 
-      const response = await axios.get((`${BACKEND_URL}/api/staff/staff-name/`).concat(branchName));
+      const response = await axios.post((`${BACKEND_URL}/api/staff/staff-name`), {
+        branchName
+      });
 
       //add response data to existing data
       setStaffData(response.data)

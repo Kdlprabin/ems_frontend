@@ -13,17 +13,21 @@ function MasterLayout() {
         <div>
           <nav>
             <ul>
-              <li><p 
-              onClick={() => navigate("/")}
+              <li><p
+                onClick={() => navigate("/")}
               >Dashboard</p></li>
-              <li><p 
-              onClick={() => navigate("/staff")}
+              <li><p
+                onClick={() => navigate("/staff")}
               >Staff</p></li>
               <li><p
-              onClick={() => navigate("/data")}
+                onClick={() => navigate("/data")}
               >Data Upload</p></li>
-              <li><p 
-              onClick={() => navigate("/login")}
+              <li>
+                <p
+                  onClick={() => navigate('/target')}
+                >Target</p></li>
+              <li><p
+                onClick={() => navigate("/login")}
               >Login</p></li>
             </ul>
           </nav>

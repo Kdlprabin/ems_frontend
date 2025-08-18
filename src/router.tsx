@@ -9,6 +9,7 @@ import DashboardPage from "./pages/dashboard.page";
 import LoginPage from "./pages/login.page";
 import StaffPage from "./pages/staff.page";
 import DataPage from "./pages/data.page";
+import TargetPage from "./pages/target.page";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
                     {
                         path: "data",
                         element: <DataPage />
+                    },
+                    {
+                        path: "target",
+                        element: <TargetPage/>
                     }
                 ]
             },

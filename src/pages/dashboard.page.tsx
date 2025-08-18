@@ -7,7 +7,7 @@ import { useState } from "react";
 
 
 const BRANCHES= [
-  "DHADING BESHI DHADING",
+"DHADING BESHI DHADING",
 "Dharke Branch",
 "DORAMBHA BRANCH",
 "GOGANPANI DHADING",
@@ -20,7 +20,8 @@ const BRANCHES= [
 "Parewatar Branch",
 "SIPADOL BHAKTAPUR",
 "UGRA TARA KABHRE PALANCHOK",
-"BHATEDADA BRANCH"
+"BHATEDADA BRANCH",
+"Chhahare Branch",
 ]
 
 

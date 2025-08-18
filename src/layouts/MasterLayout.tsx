@@ -9,7 +9,7 @@ function MasterLayout() {
   return (
     <div>
       <header>
-        <h1>EMS Banking</h1>
+        <h1 className="title">National Lagubitta Bitiya Sanstha Pvt ltd</h1>
         <div>
           <nav>
             <ul>

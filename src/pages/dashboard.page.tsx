@@ -27,7 +27,7 @@ const BRANCHES= [
 
 
 const DashboardPage = () => {
-  const [selectedBranch, setSelectedBranch] = useState<string| null>(null);
+  const [selectedBranch, setSelectedBranch] = useState<string| null>("BHATEDADA BRANCH");
 
   const handleBranchChange = (value:string) => {
     setSelectedBranch(value);

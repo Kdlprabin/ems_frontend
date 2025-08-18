@@ -21,7 +21,7 @@ const TargetPage = () => {
 
   const fetchBranchData = async () => {
     try {
-      const response = await axios.get("https://ems-backend-kdlprabin.onrender.com/api/branch/branches");
+      const response = await axios.get(`${process.env.BACKEND_URL}/api/branch/branches`);
 
       setBranchData(response.data);
 

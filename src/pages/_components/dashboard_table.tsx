@@ -2,6 +2,7 @@ import {Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "..
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const {BACKEND_URL} = process.env;
 
 interface DashboardRow {
   Branch: string;
@@ -36,7 +37,7 @@ const TableData = ({ selectedBranch }: {
      useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://ems-backend-viey.onrender.com/api/data/data"); // Adjust API endpoint
+        const response = await axios.get(`${BACKEND_URL}/api/data/data`); // Adjust API endpoint
         setDashboardData(response.data);
       } catch (error) {
         console.error("Error fetching dashboard data:", error);

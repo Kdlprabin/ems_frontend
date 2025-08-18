@@ -32,7 +32,7 @@ const StaffPage = () => {
 
   const fetchBranchData = async () => {
     try {
-      const response = await axios.get("https://ems-backend-viey.onrender.com/api/branch/branches");
+      const response = await axios.get(`${process.env.BACKEND_URL}/api/branch/branches`);
       //add response data to existing data
       setBranchData(response.data)
     } catch (error) {
@@ -42,7 +42,7 @@ const StaffPage = () => {
 
   const fetchStaffData = async () => {
     try {
-      const response = await axios.get("https://ems-backend-viey.onrender.com/api/staff/staff-name");
+      const response = await axios.get(`${process.env.BACKEND_URL}/api/staff/staff-name`);
       //add response data to existing data
       setStaffData(response.data)
     } catch (error) {
@@ -52,10 +52,7 @@ const StaffPage = () => {
 
   const fetchStaffByBranch = async (branchName: string) => {
     try {
-      // const response = await axios.get(`https://ems-backend-viey.onrender.com/api/staff/staff-name/${encodeURIComponent(branchName)}`);
-      const response = await axios.get((`http://localhost:5000/api/staff/staff-name/`).concat(branchName));
-
-      console.log(encodeURIComponent(branchName));
+      const response = await axios.get(`${process.env.BACKEND_URL}/api/staff/staff-name/${encodeURIComponent(branchName)}`);
 
       //add response data to existing data
       setStaffData(response.data)

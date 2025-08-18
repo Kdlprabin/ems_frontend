@@ -27,6 +27,8 @@ interface Staff {
   "कामको प्रकार": string;
 }
 
+const {BACKEND_URL} = process.env
+
 const TableData = ({ selectedBranch, selectedStaff }: {
   selectedBranch: string | null;
   selectedStaff: string | null;
@@ -37,7 +39,7 @@ const TableData = ({ selectedBranch, selectedStaff }: {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://ems-backend-viey.onrender.com/api/staff/data");
+        const response = await axios.get(`${BACKEND_URL}/api/staff/data`);
         setStaffData(response.data);
       } catch (error) {
         console.error("Error fetching dashboard data:", error);

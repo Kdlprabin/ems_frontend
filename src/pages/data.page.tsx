@@ -37,7 +37,7 @@ const DashboardUpload = () => {
 
     try {
       setUploading(true);
-      const response = await fetch("https://ems-backend-viey.onrender.com/api/data/convert-excel", {
+      const response = await fetch(`${process.env.BACKEND_URL}/api/data/convert-excel`, {
         method: "POST",
         body: formData,
       });
@@ -99,7 +99,7 @@ const StaffUpload = () => {
 
     try {
       setUploading(true);
-      const response = await fetch("https://ems-backend-viey.onrender.com/api/data/staff-upload", {
+      const response = await fetch(`${process.env.BACKEND_URL}/api/data/staff-upload`, {
         method: "POST",
         body: formData,
       });

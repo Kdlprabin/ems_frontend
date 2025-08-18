@@ -34,22 +34,22 @@ const TableData = ({ selectedBranch }: {
                 <TableCell>{index}</TableCell>
                 <TableCell>{row.Branch}</TableCell>
                 <TableCell>{row.Category}</TableCell>
-                <TableCell>{row["Previous Years"]}</TableCell>
-                <TableCell>{row["Target 1st Qtr"]}</TableCell>
-                <TableCell>{row["Target 2nd Qtr"]}</TableCell>
-                <TableCell>{row["Target 3rd Qtr"]}</TableCell>
-                <TableCell>{row["Target 4th Qtr"]}</TableCell>
-                <TableCell>{row["Target Total"]}</TableCell>
-                <TableCell>{row["Per Branch 1st Qtr"]}</TableCell>
-                <TableCell>{row["Per Branch 2nd Qtr"]}</TableCell>
-                <TableCell>{row["Per Branch 3rd Qtr"]}</TableCell>
-                <TableCell>{row["Per Branch 4th Qtr"]}</TableCell>
-                <TableCell>{row["Per Branch Total"]}</TableCell>
-                <TableCell>{row["Per Staff 1st Qtr"]}</TableCell>
-                <TableCell>{row["Per Staff 2nd Qtr"]}</TableCell>
-                <TableCell>{row["Per Staff 3rd Qtr"]}</TableCell>
-                <TableCell>{row["Per Staff 4th Qtr"]}</TableCell>
-                <TableCell>{row["Per Staff Total"]}</TableCell>
+                <TableCell>{Math.round(row["Previous Years"])}</TableCell>
+                <TableCell>{Math.round(row["Target 1st Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Target 2nd Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Target 3rd Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Target 4th Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Target Total"])}</TableCell>
+                <TableCell>{Math.round(row["Per Branch 1st Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Per Branch 2nd Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Per Branch 3rd Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Per Branch 4th Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Per Branch Total"])}</TableCell>
+                <TableCell>{Math.round(row["Per Staff 1st Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Per Staff 2nd Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Per Staff 3rd Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Per Staff 4th Qtr"])}</TableCell>
+                <TableCell>{Math.round(row["Per Staff Total"])}</TableCell>
                 <TableCell>{row.Staff}</TableCell>
             </TableRow>
           ))}

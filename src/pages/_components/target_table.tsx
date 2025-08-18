@@ -1,4 +1,4 @@
-import {Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "../../components/ui/table";
+import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "../../components/ui/table";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -10,36 +10,40 @@ const TableData = ({ selectedBranch }: {
   selectedBranch: string | null;
 }) => {
 
-    //fetch dashboard data
+  //fetch dashboard data
 
-    type DashboardData = {
-      Branch: string;
-      Category: string;
-      "Previous Years": number;
-      "Target 1st Qtr": number;
-      "Target 2nd Qtr": number;
-      "Target 3rd Qtr": number;
-      "Target 4th Qtr": number;
-      "Target Total": number;
-      "Per Branch 1st Qtr": number;
-      "Per Branch 2nd Qtr": number;
-      "Per Branch 3rd Qtr": number;
-      "Per Branch 4th Qtr": number;
-      "Per Branch Total": number;
-      "Per Staff 1st Qtr": number;
-      "Per Staff 2nd Qtr": number;
-      "Per Staff 3rd Qtr": number;
-      "Per Staff 4th Qtr": number;
-      "Per Staff Total": number;
-      Staff: string;
-    };
+  type DashboardData = {
+    "Branch Name": string;
+    "Staff Code": string;
+    "Staff Name": string;
+    "Post": string;
+    "Position"?: string;
+    "JobsType"?: string;
+    "Monitoring"?: string;
+    "Monitoring Post"?: string;
+    "Indicator"?: string;
+    "Full Marks"?: number;
+    "Shrawan"?: number;
+    "Bhadra"?: number;
+    "Aswoj"?: number;
+    "Kartik"?: number;
+    "Mangsir"?: number;
+    "Poush"?: number;
+    "Magh"?: number;
+    "Falgun"?: number;
+    "Chaitra"?: number;
+    "Baishak"?: number;
+    "Jestha"?: number;
+    "Ashar"?: number;
+    "Total"?: number;
+  };
 
-    const [dashboard_data, setDashboardData] = useState<DashboardData[]>([]);
+  const [dashboard_data, setDashboardData] = useState<DashboardData[]>([]);
 
-     useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${BACKEND_URL}/api/data/data`); // Adjust API endpoint
+        const response = await axios.get(`${BACKEND_URL}/api/target/employee-target`); // Adjust API endpoint
         setDashboardData(response.data);
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
@@ -53,36 +57,35 @@ const TableData = ({ selectedBranch }: {
     <>
       {
         dashboard_data
-          .filter(data => data.Branch === selectedBranch)
+          .filter(data => data["Branch Name"] === selectedBranch)
           .map((row, index) => (
             <TableRow key={index}>
-                <TableCell>{index +1}</TableCell>
-                <TableCell>{row.Branch}</TableCell>
-                <TableCell>{row.Category}</TableCell>
-                <TableCell>{Math.round(row["Previous Years"])}</TableCell>
-                <TableCell>{Math.round(row["Target 1st Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Target 2nd Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Target 3rd Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Target 4th Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Target Total"])}</TableCell>
-                <TableCell>{Math.round(row["Per Branch 1st Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Per Branch 2nd Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Per Branch 3rd Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Per Branch 4th Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Per Branch Total"])}</TableCell>
-                <TableCell>{Math.round(row["Per Staff 1st Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Per Staff 2nd Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Per Staff 3rd Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Per Staff 4th Qtr"])}</TableCell>
-                <TableCell>{Math.round(row["Per Staff Total"])}</TableCell>
-                <TableCell>{row.Staff}</TableCell>
+              <TableCell>{index + 1}</TableCell>
+              <TableCell>{row["Branch Name"]}</TableCell>
+              <TableCell>{row["Staff Code"]}</TableCell>
+              <TableCell>{row["Staff Name"]}</TableCell>
+              <TableCell>{row["JobsType"]}</TableCell>
+              <TableCell>{row["Indicator"]}</TableCell>
+              <TableCell>{row["Shrawan"]}</TableCell>
+              <TableCell>{row["Bhadra"]}</TableCell>
+              <TableCell>{row["Aswoj"]}</TableCell>
+              <TableCell>{row["Kartik"]}</TableCell>
+              <TableCell>{row["Mangsir"]}</TableCell>
+              <TableCell>{row["Poush"]}</TableCell>
+              <TableCell>{row["Magh"]}</TableCell>
+              <TableCell>{row["Falgun"]}</TableCell>
+              <TableCell>{row["Chaitra"]}</TableCell>
+              <TableCell>{row["Baishak"]}</TableCell>
+              <TableCell>{row["Jestha"]}</TableCell>
+              <TableCell>{row["Ashar"]}</TableCell>
+              <TableCell>{row["Total"]}</TableCell>
             </TableRow>
           ))}
     </>
   )
 }
 
-export function DashboardTable({ selectedBranch }: {
+export function TargetTable({ selectedBranch }: {
   selectedBranch: string | null;
 }) {
   return (
@@ -91,31 +94,27 @@ export function DashboardTable({ selectedBranch }: {
         <TableRow>
           <TableHead>S.N.</TableHead>
           <TableHead>Branch</TableHead>
-          <TableHead>Indicators</TableHead>
-          <TableHead>Previous Years</TableHead>
+          <TableHead>Staff Code</TableHead>
+          <TableHead>Staff Name</TableHead>
+          <TableHead>Job Type</TableHead>
+
+          <TableHead>Indicator</TableHead>
 
           {/* Target This FY */}
-          <TableHead>Target 1st Qtr</TableHead>
-          <TableHead>Target 2nd Qtr</TableHead>
-          <TableHead>Target 3rd Qtr</TableHead>
-          <TableHead>Target 4th Qtr</TableHead>
-          <TableHead>Target Total</TableHead>
+          <TableHead>Shrawan</TableHead>
+          <TableHead>Bhadra</TableHead>
+          <TableHead>Aswoj</TableHead>
+          <TableHead>Kartik</TableHead>
+          <TableHead>Mangsir</TableHead>
+          <TableHead>Poush</TableHead>
+          <TableHead>Magh</TableHead>
+          <TableHead>Falgun</TableHead>
+          <TableHead>Chaitra</TableHead>
+          <TableHead>Baishak</TableHead>
+          <TableHead>Jestha</TableHead>
+          <TableHead>Ashar</TableHead>
 
-          {/* Target per branch*/}
-          <TableHead>Per Branch 1st Qtr</TableHead>
-          <TableHead>Per Branch 2nd Qtr</TableHead>
-          <TableHead>Per Branch 3rd Qtr</TableHead>
-          <TableHead>Per Branch 4th Qtr</TableHead>
-          <TableHead>Per Branch Total</TableHead>
-
-          {/* Per Staff */}
-          <TableHead>Per Staff 1st Qtr</TableHead>
-          <TableHead>Per Staff 2nd Qtr</TableHead>
-          <TableHead>Per Staff 3rd Qtr</TableHead>
-          <TableHead>Per Staff 4th Qtr</TableHead>
-          <TableHead>Per Staff Total</TableHead>
-
-          <TableHead>Staff</TableHead>
+          <TableHead>Total Target </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

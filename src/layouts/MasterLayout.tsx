@@ -10,6 +10,7 @@ function MasterLayout() {
     <div>
       <header>
         <h1 className="title">National Lagubitta Bitiya Sanstha ltd</h1>
+        <h1 className="sub-title">Monitoring office : Banepa, Kavre</h1>
         <div>
           <nav>
             <ul>

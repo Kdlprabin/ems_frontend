@@ -1,6 +1,6 @@
 import { Card } from "../components/ui/card";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../components/ui/select";
-import { DashboardTable } from "./_components/dashboard_table";
+import {TargetTable} from "./_components/target_table"
 import './dashboard.page.css'; // Assuming you have a CSS file for styling
 
 import { useEffect, useState } from "react";
@@ -24,8 +24,6 @@ const TargetPage = () => {
   const fetchBranchData = async () => {
     try {
       const response = await axios.get(`${BACKEND_URL}/api/branch/branches`);
-
-      console.log(process.env);
 
       setBranchData(response.data);
 
@@ -58,7 +56,7 @@ const TargetPage = () => {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <DashboardTable selectedBranch={selectedBranch} />
+        <TargetTable selectedBranch={selectedBranch} />
       </Card>
     </>
   );

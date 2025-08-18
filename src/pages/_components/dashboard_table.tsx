@@ -3,13 +3,35 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
+interface DashboardRow {
+  Branch: string;
+  Category: string;
+  "Previous Years": number;
+  "Target 1st Qtr": number;
+  "Target 2nd Qtr": number;
+  "Target 3rd Qtr": number;
+  "Target 4th Qtr": number;
+  "Target Total": number;
+  "Per Branch 1st Qtr": number;
+  "Per Branch 2nd Qtr": number;
+  "Per Branch 3rd Qtr": number;
+  "Per Branch 4th Qtr": number;
+  "Per Branch Total": number;
+  "Per Staff 1st Qtr": number;
+  "Per Staff 2nd Qtr": number;
+  "Per Staff 3rd Qtr": number;
+  "Per Staff 4th Qtr": number;
+  "Per Staff Total": number;
+  Staff: string;
+}
+
 const TableData = ({ selectedBranch }: {
   selectedBranch: string | null;
 }) => {
 
     //fetch dashboard data
 
-    const [dashboard_data, setDashboardData] = useState<any[]>([]);
+    const [dashboard_data, setDashboardData] = useState<DashboardRow[]>([]);
 
      useEffect(() => {
     const fetchData = async () => {

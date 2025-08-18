@@ -3,7 +3,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { StaffTable } from "./_components/staff_table"; // Importing the DashboardTable component
 import './dashboard.page.css'; // Assuming you have a CSS file for styling
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 
 const StaffPage = () => {
@@ -20,9 +20,9 @@ const StaffPage = () => {
 
 
   // Fetch branch data
-  const [branchData, setBranchData] = useState<any[]>([]);
+  const [branchData, setBranchData] = useState<string[]>([]);
 
-  const [staffData, setStaffData] = useState<any[]>([])
+  const [staffData, setStaffData] = useState<string[]>([])
 
   const fetchBranchData = async () => {
     try {
@@ -45,7 +45,7 @@ const StaffPage = () => {
   };
 
   // Fetch branch data on component mount
-  useState(() => {
+  useEffect(() => {
     fetchBranchData();
     fetchStaffData();
   }, []);
@@ -68,7 +68,7 @@ const StaffPage = () => {
             </SelectGroup>
           </SelectContent>
         </Select>
-         <Select onValueChange={handleBranchChange}>
+         <Select onValueChange={handleStaffChange}>
           <SelectTrigger className="w-[180px] ml-2">
             <SelectValue placeholder="Select a Staff" />
           </SelectTrigger>
@@ -84,7 +84,7 @@ const StaffPage = () => {
           </SelectContent>
         </Select>
         </div>
-        < StaffTable selectedBranch={selectedBranch} />
+        < StaffTable selectedBranch={selectedBranch} selectedStaff={selectedStaff} />
       </Card>
     </>
   );

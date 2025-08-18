@@ -3,7 +3,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { DashboardTable } from "./_components/dashboard_table";
 import './dashboard.page.css'; // Assuming you have a CSS file for styling
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import axios from "axios";
 
@@ -17,7 +17,7 @@ const TargetPage = () => {
 
 
   // Fetch branch data
-  const [branchData, setBranchData] = useState<any[]>([]);
+  const [branchData, setBranchData] = useState<string[]>([]);
 
   const fetchBranchData = async () => {
     try {
@@ -32,7 +32,7 @@ const TargetPage = () => {
   };
 
   // Fetch branch data on component mount
-  useState(() => {
+  useEffect(() => {
     fetchBranchData();
   }, []);
 
@@ -47,8 +47,8 @@ const TargetPage = () => {
             <SelectGroup>
               <SelectLabel>Branches</SelectLabel>
               {branchData.map((branch) => (
-                <SelectItem key={branch._id} value={branch.branch_name}>
-                  {branch.branch_name}
+                <SelectItem key={branch} value={branch}>
+                  {branch}
                 </SelectItem>
               ))}
             </SelectGroup>

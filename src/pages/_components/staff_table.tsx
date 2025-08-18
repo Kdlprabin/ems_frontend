@@ -12,13 +12,31 @@ import axios from "axios";
 
 
 
+interface Staff {
+  "Staff Code": string;
+  "Branch Name": string;
+  "Staff Name": string;
+  "Post": string;
+  "JobsType": string;
+  "Monitoring": string;
+  "Monitoring Post": string;
+  "Indicator": string;
+  "Full Marks": string | number;
+  "शाखाको नाम": string;
+  "कर्मचारीको नाम": string;
+  "पद": string;
+  "सुपरिवेक्षक": string;
+  "कामको प्रकार": string;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const TableData = ({ selectedBranch }: {
   selectedBranch: string | null;
 }) => {
 
   //fetch dashboard data
 
-  const [staffData, setStaffData] = useState<any[]>([]);
+  const [staffData, setStaffData] = useState<Staff[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -85,8 +103,9 @@ const TableData = ({ selectedBranch }: {
 
 
 
-export function StaffTable({ selectedBranch }: {
-  selectedBranch: string | null
+export function StaffTable({ selectedBranch}: {
+  selectedBranch: string | null,
+  selectedStaff: string | null
 }) {
   return (
     <Table>

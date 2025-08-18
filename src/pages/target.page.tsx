@@ -8,7 +8,7 @@ import { useState } from "react";
 import axios from "axios";
 
 
-const DashboardPage = () => {
+const TargetPage = () => {
   const [selectedBranch, setSelectedBranch] = useState<string| null>("BHATEDADA BRANCH");
 
   const handleBranchChange = (value:string) => {
@@ -21,9 +21,11 @@ const DashboardPage = () => {
 
   const fetchBranchData = async () => {
     try {
-      const response = await axios.get("https://ems-backend-viey.onrender.com/api/branch/branches");
-      //add response data to existing data
-      setBranchData(response.data)
+      const response = await axios.get("https://ems-backend-kdlprabin.onrender.com/api/branch/branches");
+
+      setBranchData(response.data);
+
+      console.log(response.data);
     } catch (error) {
       console.error("Error fetching branch data:", error);
     } 
@@ -44,9 +46,9 @@ const DashboardPage = () => {
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Branches</SelectLabel>
-              {branchData.sort().map((branch) => (
-                <SelectItem key={branch} value={branch}>
-                  {branch}
+              {branchData.map((branch) => (
+                <SelectItem key={branch._id} value={branch.branch_name}>
+                  {branch.branch_name}
                 </SelectItem>
               ))}
             </SelectGroup>
@@ -58,4 +60,4 @@ const DashboardPage = () => {
   );
 }
 
-export default DashboardPage;
+export default TargetPage;

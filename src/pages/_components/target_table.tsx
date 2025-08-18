@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
-const {BACKEND_URL} = process.env;
+const BACKEND_URL = 'https://ems-backend-viey.onrender.com'
 
 
 const TableData = ({ selectedBranch }: {

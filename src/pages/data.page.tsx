@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+const BACKEND_URL = 'https://ems-backend-viey.onrender.com'
+
+
 const DataPage = () => {
   return(
     <div className="flex p-4 gap-2">
@@ -37,7 +40,7 @@ const DashboardUpload = () => {
 
     try {
       setUploading(true);
-      const response = await fetch(`${process.env.BACKEND_URL}/api/data/convert-excel`, {
+      const response = await fetch(`${BACKEND_URL}/api/data/convert-excel`, {
         method: "POST",
         body: formData,
       });
@@ -99,7 +102,7 @@ const StaffUpload = () => {
 
     try {
       setUploading(true);
-      const response = await fetch(`${process.env.BACKEND_URL}/api/data/staff-upload`, {
+      const response = await fetch(`${BACKEND_URL}/api/data/staff-upload`, {
         method: "POST",
         body: formData,
       });

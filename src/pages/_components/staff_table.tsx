@@ -27,7 +27,7 @@ interface Staff {
   "कामको प्रकार": string;
 }
 
-const {BACKEND_URL} = process.env
+const BACKEND_URL = 'https://ems-backend-viey.onrender.com'
 
 const TableData = ({ selectedBranch, selectedStaff }: {
   selectedBranch: string | null;

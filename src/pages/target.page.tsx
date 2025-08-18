@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 
+const BACKEND_URL = 'https://ems-backend-viey.onrender.com'
+
 
 const TargetPage = () => {
   const [selectedBranch, setSelectedBranch] = useState<string| null>("BHATEDADA BRANCH");
@@ -21,7 +23,9 @@ const TargetPage = () => {
 
   const fetchBranchData = async () => {
     try {
-      const response = await axios.get(`${process.env.BACKEND_URL}/api/branch/branches`);
+      const response = await axios.get(`${BACKEND_URL}/api/branch/branches`);
+
+      console.log(process.env);
 
       setBranchData(response.data);
 

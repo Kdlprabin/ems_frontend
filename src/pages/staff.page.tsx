@@ -6,6 +6,9 @@ import './dashboard.page.css'; // Assuming you have a CSS file for styling
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const BACKEND_URL = 'https://ems-backend-viey.onrender.com'
+
+
 const StaffPage = () => {
   const [selectedBranch, setSelectedBranch] = useState<string | null>("BHATEDADA BRANCH");
   const [selectedStaff, setSelectedStaff] = useState<string | null>(null)
@@ -24,6 +27,8 @@ const StaffPage = () => {
     setSelectedStaff(value)
   }
 
+  console.log(process.env);
+
 
   // Fetch branch data
   const [branchData, setBranchData] = useState<string[]>([]);
@@ -32,7 +37,7 @@ const StaffPage = () => {
 
   const fetchBranchData = async () => {
     try {
-      const response = await axios.get(`${process.env.BACKEND_URL}/api/branch/branches`);
+      const response = await axios.get(`${BACKEND_URL}/api/branch/branches`);
       //add response data to existing data
       setBranchData(response.data)
     } catch (error) {
@@ -42,7 +47,7 @@ const StaffPage = () => {
 
   const fetchStaffData = async () => {
     try {
-      const response = await axios.get(`${process.env.BACKEND_URL}/api/staff/staff-name`);
+      const response = await axios.get(`${BACKEND_URL}/api/staff/staff-name`);
       //add response data to existing data
       setStaffData(response.data)
     } catch (error) {
@@ -52,7 +57,7 @@ const StaffPage = () => {
 
   const fetchStaffByBranch = async (branchName: string) => {
     try {
-      const response = await axios.get(`${process.env.BACKEND_URL}/api/staff/staff-name/${encodeURIComponent(branchName)}`);
+      const response = await axios.get(`${BACKEND_URL}/api/staff/staff-name/${encodeURIComponent(branchName)}`);
 
       //add response data to existing data
       setStaffData(response.data)

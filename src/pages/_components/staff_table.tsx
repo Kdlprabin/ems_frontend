@@ -23,7 +23,7 @@ const TableData = ({ selectedBranch }: {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/staff/data"); // Adjust API endpoint
+        const response = await axios.get("https://ems-backend-viey.onrender.com/api/staff/data"); // Adjust API endpoint
         setStaffData(response.data);
       } catch (error) {
         console.error("Error fetching dashboard data:", error);

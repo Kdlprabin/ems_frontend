@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const DataPage = () => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState("");
 
   // Handle file selection
-  const handleFileChange = (e) => {
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
     setFile(e.target.files[0]);
+  }
     setMessage("");
   };
 
@@ -35,9 +38,9 @@ const DataPage = () => {
       const data = await response.json();
       setMessage("File uploaded successfully!");
       console.log("Response from API:", data);
-    } catch (error) {
-      console.error("Upload error:", error);
-      setMessage(`Error: ${error.message}`);
+    } catch (e) {
+      console.error("Error uploading file:", e);
+      setMessage("Error uploading file. Please try again.");
     } finally {
       setUploading(false);
     }

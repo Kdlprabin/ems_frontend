@@ -19,6 +19,9 @@ function MasterLayout() {
               <li><p 
               onClick={() => navigate("/staff")}
               >Staff</p></li>
+              <li><p
+              onClick={() => navigate("/data")}
+              >Data Upload</p></li>
               <li><p 
               onClick={() => navigate("/login")}
               >Login</p></li>

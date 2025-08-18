@@ -8,6 +8,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import DashboardPage from "./pages/dashboard.page";
 import LoginPage from "./pages/login.page";
 import StaffPage from "./pages/staff.page";
+import DataPage from "./pages/data.page";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <DashboardLayout/>,
+                element: <DashboardLayout />,
                 children: [
                     {
                         path: "",
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
                     {
                         path: "staff",
                         element: <StaffPage />
+                    },
+                    {
+                        path: "data",
+                        element: <DataPage />
                     }
                 ]
             },

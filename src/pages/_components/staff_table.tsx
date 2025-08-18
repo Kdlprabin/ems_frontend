@@ -10,8 +10,6 @@ import {
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
-
 interface Staff {
   "Staff Code": string;
   "Branch Name": string;
@@ -29,81 +27,58 @@ interface Staff {
   "कामको प्रकार": string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const TableData = ({ selectedBranch }: {
+const TableData = ({ selectedBranch, selectedStaff }: {
   selectedBranch: string | null;
+  selectedStaff: string | null;
 }) => {
-
-  //fetch dashboard data
 
   const [staffData, setStaffData] = useState<Staff[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://ems-backend-viey.onrender.com/api/staff/data"); // Adjust API endpoint
+        const response = await axios.get("https://ems-backend-viey.onrender.com/api/staff/data");
         setStaffData(response.data);
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
       }
     };
-
     fetchData();
   }, []);
 
+  // ✅ Apply filtering logic
+  const filteredData = staffData.filter(row => {
+    const branchMatch = selectedBranch === "All" || row["Branch Name"] === selectedBranch;
+    const staffMatch = !selectedStaff || row["Staff Name"] === selectedStaff;
+    return branchMatch && staffMatch;
+  });
+
   return (
     <>
-      {
-        selectedBranch === "All"
-          ? staffData.map((row, index) => (
-            <TableRow key={index}>
-              <TableCell>{index + 1}</TableCell>
-              <TableCell>{row["Staff Code"]}</TableCell>
-              <TableCell>{row["Branch Name"]}</TableCell>
-              <TableCell>{row["Staff Name"]}</TableCell>
-              <TableCell>{row["Post"]}</TableCell>
-              <TableCell>{row["JobsType"]}</TableCell>
-              <TableCell>{row["Monitoring"]}</TableCell>
-              <TableCell>{row["Monitoring Post"]}</TableCell>
-              <TableCell>{row["Indicator"]}</TableCell>
-              <TableCell>{row["Full Marks"]}</TableCell>
-              <TableCell>{row["शाखाको नाम"]}</TableCell>
-              <TableCell>{row["कर्मचारीको नाम"]}</TableCell>
-              <TableCell>{row["पद"]}</TableCell>
-              <TableCell>{row["सुपरिवेक्षक"]}</TableCell>
-              <TableCell>{row["कामको प्रकार"]}</TableCell>
-            </TableRow>
-          ))
-          : staffData
-            .filter(row => row["Branch Name"] === selectedBranch) // ✅ fixed key
-            .map((row, index) => (
-              <TableRow key={index}>
-                <TableCell>{index + 1}</TableCell>
-                <TableCell>{row["Staff Code"]}</TableCell>
-                <TableCell>{row["Branch Name"]}</TableCell>
-                <TableCell>{row["Staff Name"]}</TableCell>
-                <TableCell>{row["Post"]}</TableCell>
-                <TableCell>{row["JobsType"]}</TableCell>
-                <TableCell>{row["Monitoring"]}</TableCell>
-                <TableCell>{row["Monitoring Post"]}</TableCell>
-                <TableCell>{row["Indicator"]}</TableCell>
-                <TableCell>{row["Full Marks"]}</TableCell>
-                <TableCell>{row["शाखाको नाम"]}</TableCell>
-                <TableCell>{row["कर्मचारीको नाम"]}</TableCell>
-                <TableCell>{row["पद"]}</TableCell>
-                <TableCell>{row["सुपरिवेक्षक"]}</TableCell>
-                <TableCell>{row["कामको प्रकार"]}</TableCell>
-              </TableRow>
-            ))
-      }
-
+      {filteredData.map((row, index) => (
+        <TableRow key={index}>
+          <TableCell>{index + 1}</TableCell>
+          <TableCell>{row["Staff Code"]}</TableCell>
+          <TableCell>{row["Branch Name"]}</TableCell>
+          <TableCell>{row["Staff Name"]}</TableCell>
+          <TableCell>{row["Post"]}</TableCell>
+          <TableCell>{row["JobsType"]}</TableCell>
+          <TableCell>{row["Monitoring"]}</TableCell>
+          <TableCell>{row["Monitoring Post"]}</TableCell>
+          <TableCell>{row["Indicator"]}</TableCell>
+          <TableCell>{row["Full Marks"]}</TableCell>
+          <TableCell>{row["शाखाको नाम"]}</TableCell>
+          <TableCell>{row["कर्मचारीको नाम"]}</TableCell>
+          <TableCell>{row["पद"]}</TableCell>
+          <TableCell>{row["सुपरिवेक्षक"]}</TableCell>
+          <TableCell>{row["कामको प्रकार"]}</TableCell>
+        </TableRow>
+      ))}
     </>
   )
 }
 
-
-
-export function StaffTable({ selectedBranch}: {
+export function StaffTable({ selectedBranch, selectedStaff }: {
   selectedBranch: string | null,
   selectedStaff: string | null
 }) {
@@ -129,7 +104,7 @@ export function StaffTable({ selectedBranch}: {
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableData selectedBranch={selectedBranch} />
+        <TableData selectedBranch={selectedBranch} selectedStaff={selectedStaff} />
       </TableBody>
     </Table>
   )

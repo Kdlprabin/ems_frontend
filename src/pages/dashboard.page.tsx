@@ -5,25 +5,7 @@ import './dashboard.page.css'; // Assuming you have a CSS file for styling
 
 import { useState } from "react";
 
-
-const BRANCHES= [
-"DHADING BESHI DHADING",
-"Dharke Branch",
-"DORAMBHA BRANCH",
-"GOGANPANI DHADING",
-"Jalpa Branch",
-"JIRI BRANCH",
-"KHANDICHAUR SINDHUPALANCHOK",
-"KISPANG BRANCH",
-"Majhimtar Branch",
-"OKHARPAUWA BRANCH",
-"Parewatar Branch",
-"SIPADOL BHAKTAPUR",
-"UGRA TARA KABHRE PALANCHOK",
-"BHATEDADA BRANCH",
-"Chhahare Branch",
-]
-
+import axios from "axios";
 
 
 const DashboardPage = () => {
@@ -32,6 +14,24 @@ const DashboardPage = () => {
   const handleBranchChange = (value:string) => {
     setSelectedBranch(value);
   };
+
+
+  // Fetch branch data
+  const [branchData, setBranchData] = useState<any[]>([]);
+
+  const fetchBranchData = async () => {
+    try {
+      const response = await axios.get("https://ems-backend-kdlprabin.onrender.com/api/branch/branches");
+      setBranchData(response.data);
+    } catch (error) {
+      console.error("Error fetching branch data:", error);
+    } 
+  };
+
+  // Fetch branch data on component mount
+  useState(() => {
+    fetchBranchData();
+  }, []);
 
   return (
     <>
@@ -43,9 +43,9 @@ const DashboardPage = () => {
           <SelectContent>
             <SelectGroup>
               <SelectLabel>Branches</SelectLabel>
-              {BRANCHES.sort((a, b) => a.localeCompare(b)).map((branch) => (
-                <SelectItem className="capitalize" key={branch} value={branch}>
-                  {branch}
+              {branchData.map((branch) => (
+                <SelectItem key={branch._id} value={branch.branch_name}>
+                  {branch.branch_name}
                 </SelectItem>
               ))}
             </SelectGroup>

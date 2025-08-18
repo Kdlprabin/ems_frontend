@@ -31,7 +31,7 @@ const TableData = ({ selectedBranch }: {
           .filter(data => data.Branch === selectedBranch)
           .map((row, index) => (
             <TableRow key={index}>
-                <TableCell>{index}</TableCell>
+                <TableCell>{index +1}</TableCell>
                 <TableCell>{row.Branch}</TableCell>
                 <TableCell>{row.Category}</TableCell>
                 <TableCell>{Math.round(row["Previous Years"])}</TableCell>

@@ -1,17 +1,106 @@
+import axios from "axios";
 import { useState } from "react";
 
 const BACKEND_URL = 'https://ems-backend-viey.onrender.com'
 
 
 const DataPage = () => {
-  return(
-    <div className="flex p-4 gap-2">
-    <DashboardUpload/>
-    <StaffUpload/>
+  return (
+    <div className="flex p-4 gap-2 justify-evenly">
+      <div className="">
+        <DashboardUpload />
+        <StaffUpload />
+      </div>
+      <div className="">
+        <DashboardDelete />
+        <StaffDelete />
+      </div>
     </div>
   )
-  
+
 };
+
+
+const DashboardDelete = () => {
+  const [deleting, setDeleting] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+
+  const handleDelete = async () => {
+    setDeleting(true);
+    setMessage(null);
+
+    try {
+      await axios.delete(`${BACKEND_URL}/api/data/delete`);
+      setMessage("✅ Dashboard data deleted successfully.");
+    } catch (error: any) {
+      console.error("Error deleting dashboard data:", error);
+      setMessage("❌ Failed to delete dashboard data.");
+    } finally {
+      setDeleting(false);
+    }
+  };
+
+  return (
+    <div className="p-4 border rounded shadow-md max-w-md mx-auto">
+      <h2 className="text-xl font-bold mb-2">Delete Data (Dashboard)</h2>
+
+      <button
+        className="mt-2 px-4 py-2 bg-red-600 text-white rounded disabled:opacity-50"
+        onClick={handleDelete}
+        disabled={deleting}
+      >
+        {deleting ? "Deleting..." : "Delete Dashboard Data"}
+      </button>
+
+      {message && (
+        <p className="mt-3 text-sm font-medium">
+          {message}
+        </p>
+      )}
+    </div>
+  );
+};
+
+
+const StaffDelete = () => {
+  const [deleting, setDeleting] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+
+  const handleDelete = async () => {
+    setDeleting(true);
+    setMessage(null);
+
+    try {
+      await axios.delete(`${BACKEND_URL}/api/staff/delete`);
+      setMessage("✅ Dashboard data deleted successfully.");
+    } catch (error: any) {
+      console.error("Error deleting dashboard data:", error);
+      setMessage("❌ Failed to delete dashboard data.");
+    } finally {
+      setDeleting(false);
+    }
+  };
+
+  return (
+    <div className="p-4 border rounded shadow-md max-w-md mx-auto">
+      <h2 className="text-xl font-bold mb-2">Delete Data (Staff)</h2>
+
+      <button
+        className="mt-2 px-4 py-2 bg-red-600 text-white rounded disabled:opacity-50"
+        onClick={handleDelete}
+        disabled={deleting}
+      >
+        {deleting ? "Deleting..." : "Delete Dashboard Data"}
+      </button>
+
+      {message && (
+        <p className="mt-3 text-sm font-medium">
+          {message}
+        </p>
+      )}
+    </div>
+  );
+}
 
 
 const DashboardUpload = () => {
@@ -23,8 +112,8 @@ const DashboardUpload = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-    setFile(e.target.files[0]);
-  }
+      setFile(e.target.files[0]);
+    }
     setMessage("");
   };
 
@@ -85,8 +174,8 @@ const StaffUpload = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-    setFile(e.target.files[0]);
-  }
+      setFile(e.target.files[0]);
+    }
     setMessage("");
   };
 

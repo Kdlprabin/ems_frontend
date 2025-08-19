@@ -35,7 +35,7 @@ type DashboardData = {
 
 const MonthlyData = ({ row }: { row: DashboardData }) => {
 
-  const [indicators, setIndicators] = useState(["Member", "Loanee"]);
+  const [indicators,] = useState(["Member", "Loanee"]);
   console.log(row);
   return (
     <>

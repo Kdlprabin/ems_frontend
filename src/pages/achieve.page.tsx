@@ -11,7 +11,7 @@ const BACKEND_URL = 'https://ems-backend-viey.onrender.com'
 
 
 const TargetPage = () => {
-  const [selectedBranch, setSelectedBranch] = useState<string| null>("BHATEDADA BRANCH");
+  const [selectedBranch, setSelectedBranch] = useState<string| null>("All");
   const [selectedStaff, setSelectedStaff] = useState<string | null>(null)
 
   

@@ -42,8 +42,7 @@ const TableData = ({ selectedBranch }: {
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
       }
-    };
-
+    };                                     
     fetchData();
   }, []);
 

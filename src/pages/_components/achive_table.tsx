@@ -91,7 +91,7 @@ const TableData = ({ selectedBranch, selectedStaff }: {
 
   // ✅ Apply filtering logic
   const filteredData = staffData.filter((row) => {
-    const branchMatch = selectedBranch === "All" || row["Branch Name"] === selectedBranch;
+    const branchMatch = selectedBranch === "All" || row["Branch"] === selectedBranch;
     const staffMatch = !selectedStaff || row["Staff Name"] === selectedStaff;
     return branchMatch && staffMatch;
   });

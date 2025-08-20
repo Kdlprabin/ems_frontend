@@ -31,6 +31,9 @@ function MasterLayout() {
                 onClick={() => navigate("/achieve")}
               >Achieve</p></li>
               <li><p
+                onClick={() => navigate("/report")}
+              >Report</p></li>
+              <li><p
                 onClick={() => navigate("/login")}
               >Login</p></li>
             </ul>

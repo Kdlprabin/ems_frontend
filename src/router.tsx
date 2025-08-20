@@ -11,6 +11,7 @@ import StaffPage from "./pages/staff.page";
 import DataPage from "./pages/data.page";
 import TargetPage from "./pages/target.page";
 import AchievePage from "./pages/achieve.page"
+import ReportPage from "./pages/report.page";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
                       {
                         path: "achieve",
                         element: <AchievePage/>
+                    },
+                    {
+                        path: "report",
+                        element: <ReportPage/>
                     }
                 ]
             },

@@ -10,6 +10,7 @@ import LoginPage from "./pages/login.page";
 import StaffPage from "./pages/staff.page";
 import DataPage from "./pages/data.page";
 import TargetPage from "./pages/target.page";
+import AchievePage from "./pages/achieve.page"
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
                     {
                         path: "target",
                         element: <TargetPage/>
+                    },
+                      {
+                        path: "achieve",
+                        element: <AchievePage/>
                     }
                 ]
             },

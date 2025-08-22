@@ -11,11 +11,11 @@ import axios from "axios";
 
 interface MonthlyData {
   month: string;
-  Target: string | number;
-  Achieve: string | number;
-  "Achieve %": string | number;
-  "Full Mark": string | number;
-  Result: string;
+  target: string | number;
+  achieve: string | number;
+  achievePercent: string | number;
+  fullMarks: string | number;
+  result: string;
 }
 
 interface Staff {
@@ -82,11 +82,11 @@ const TableData = ({
               </>
             )}
             <TableCell>{monthData.month}</TableCell>
-            <TableCell>{monthData.Target}</TableCell>
-            <TableCell>{monthData.Achieve}</TableCell>
-            <TableCell>{monthData["Achieve %"]}%</TableCell>
-            <TableCell>{monthData["Full Mark"]}</TableCell>
-            <TableCell>{monthData.Result}</TableCell>
+            <TableCell>{monthData.target ? Math.round(Number(monthData.target)) : 0}</TableCell>
+            <TableCell>{monthData.achieve ? Math.round(Number(monthData.achieve)) : 0}</TableCell>
+            <TableCell>{monthData.achievePercent}%</TableCell>
+            <TableCell>{monthData.fullMarks}</TableCell>
+            <TableCell>{monthData.result}</TableCell>
           </TableRow>
         ));
       })}

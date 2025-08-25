@@ -10,9 +10,6 @@ const BACKEND_URL = 'https://ems-backend-viey.onrender.com'
 
 const MONTHS = [
   'All',
-  'Baishak',
-  'Jestha',
-  'Ashar',
   'Shrawan',
   'Bhadra',
   'Aswoj',
@@ -21,14 +18,17 @@ const MONTHS = [
   'Poush',
   'Magh',
   'Falgun',
-  'Chaitra'
+  'Chaitra',
+  'Baishak',
+  'Jestha',
+  'Ashar'
 ]
 
 
 const ReportPage = () => {
   const [selectedBranch, setSelectedBranch] = useState<string | null>("BHATEDADA BRANCH");
   const [selectedStaff, setSelectedStaff] = useState<string | null>(null);
-  const [selectedMonth, setSelectedMonth] = useState< string | null>('Baishak');
+  const [selectedMonth, setSelectedMonth] = useState< string | null>('Shrawan');
 
   const handleBranchChange = (value: string) => {
     setSelectedBranch(value);

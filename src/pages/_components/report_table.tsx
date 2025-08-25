@@ -44,7 +44,7 @@ const TableData = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/data/report-data`);
+        const response = await axios.get(`${BACKEND_URL}/api/data/report-data`);
         setStaffData(response.data);
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
